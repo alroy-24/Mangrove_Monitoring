@@ -27,36 +27,109 @@ risk prediction, and ecosystem-services valuation along 400 km of India's Konkan
 
 ---
 
-## Screenshots
+## Dashboard
 
-> Place screenshots in `docs/screenshots/` and they will render below. Run the app with `run.bat`, navigate each page, and take a fullscreen capture.
+<img src="docs/screenshots/dashboard.png.png" alt="Mangrove Monitor — Dashboard with KPI cards and 5-year coverage trend" width="100%" />
 
-<table>
-  <tr>
-    <td><img src="docs/screenshots/dashboard.png" alt="Dashboard — KPI cards and coverage trend chart" /></td>
-    <td><img src="docs/screenshots/map.png" alt="Interactive Leaflet map with mangrove overlays" /></td>
-  </tr>
-  <tr>
-    <td align="center"><b>Dashboard</b> — KPI cards &amp; coverage trend</td>
-    <td align="center"><b>Interactive Map</b> — Leaflet + transparent RGBA overlays</td>
-  </tr>
-  <tr>
-    <td><img src="docs/screenshots/predict.png" alt="Live Prediction with 9 sliders and SHAP waterfall chart" /></td>
-    <td><img src="docs/screenshots/analytics.png" alt="Analytics — carbon stock and ecosystem services valuation" /></td>
-  </tr>
-  <tr>
-    <td align="center"><b>Live Prediction</b> — 9-slider XGBoost inference + SHAP waterfall</td>
-    <td align="center"><b>Analytics</b> — Carbon &amp; ecosystem-services valuation in ₹</td>
-  </tr>
-  <tr>
-    <td><img src="docs/screenshots/risk.png" alt="Risk heatmap and zone-distribution donut chart" /></td>
-    <td><img src="docs/screenshots/changes.png" alt="Change detection maps — loss and gain per period" /></td>
-  </tr>
-  <tr>
-    <td align="center"><b>Risk Analysis</b> — continuous heatmap + zone donut</td>
-    <td align="center"><b>Change Detection</b> — loss/gain maps 2020→2025</td>
-  </tr>
-</table>
+> **22.1 % coverage · −0.19 % 5-year change · 0.2 % high-risk area · 95 % model accuracy** — at a glance from the hero dashboard.
+
+---
+
+## Interactive Map
+
+<img src="docs/screenshots/map.png.png" alt="Leaflet interactive map of Vasai–Konkan coastline with mangrove overlays and draw-zone risk report" width="100%" />
+
+> Leaflet map of the full Vasai–Konkan coastline with transparent RGBA mangrove overlays, year selector (2020 / 2021 / 2023 / 2025), time-lapse animation (0.5× / 1× / 2×), risk layer toggle, and three basemaps (Street / Clean / Satellite).
+
+---
+
+## Draw-Area Prediction
+
+One of the most powerful features of the map: **click and drag any rectangular zone** on the coastline to fire an instant risk query against the backend. The Zone Risk Report panel (visible at the bottom of the map screenshot above) returns a full breakdown for that custom area in real time.
+
+| Field | What it shows |
+|---|---|
+| **Area** | Size of your selected zone in hectares |
+| **Dominant Risk** | Majority risk class (Low / Medium / High) across pixels in the zone |
+| **Carbon Stock** | Estimated tCO₂ stored in the selected zone |
+| **Annual Value** | Ecosystem services value (₹/yr) for the zone |
+| **Risk Distribution** | Bar showing the Low / Medium / High pixel split within the zone |
+
+> In the screenshot the drawn zone returns **Medium risk**, covering **0.8 ha**, holding **2.3k tCO₂** of carbon stock, worth **₹1.6L/yr** in ecosystem services — all computed on the fly from the XGBoost risk model output without a page reload.
+
+This allows conservationists and field researchers to **interrogate any sub-region of the coast** without needing GIS software or scripting knowledge.
+
+---
+
+## Risk Analysis
+
+<img src="docs/screenshots/risk.png.png" alt="Risk Analysis page — donut chart, probability heatmap, and classified risk zone map" width="100%" />
+
+> XGBoost predicts per-pixel loss probability across all 65,536 pixels. **96.8 % Low · 3.1 % Medium · 0.2 % High (120 critical pixels)**. Visualised as a continuous heatmap (RdYlGn_r) and a discrete risk-zone classification map.
+
+---
+
+## Live Prediction & SHAP Explainability
+
+<img src="docs/screenshots/predict.png.png" alt="Live Prediction — 9 feature sliders, risk badge, input summary panel" width="100%" />
+
+<br/>
+
+<img src="docs/screenshots/shap.png.png" alt="SHAP waterfall chart — per-feature contribution to risk prediction" width="100%" />
+
+> Adjust 9 ecological sliders and hit **Predict Risk** — XGBoost returns a probability and risk badge in real time. The SHAP waterfall chart below explains exactly why: here *Current Mangrove* pushes risk up by +6.17 while *Aquaculture Distance* (−4.28) and *Fragmentation* (−2.01) pull it down.
+
+---
+
+## Data & Analytics
+
+The Analytics module provides a four-tab deep-dive into carbon accounting, ecosystem economics, environmental driver correlations, and data exports.
+
+### Carbon Sequestration
+
+<img src="docs/screenshots/carbon.png.png" alt="Carbon tab — total stock, annual sequestration, carbon lost, cars equivalent, carbon market value chart" width="100%" />
+
+> **478.2k tCO₂** total above- and below-ground carbon stock. The mangroves sequester **869 tCO₂/yr**, equivalent to removing **395 cars** from the road annually. Net coverage loss since 2020 has cost **1,817 tCO₂** — worth ₹22.7 lakh at Gold Standard voluntary-market rates (₹1,250/tCO₂).
+
+| Metric | Value |
+|---|---|
+| Total carbon stock (2025) | 478,200 tCO₂ |
+| Annual sequestration | 869 tCO₂/yr |
+| Carbon lost (2020–25) | 1,817 tCO₂ |
+| Cars-equivalent offset | 395 vehicles/yr |
+| Annual carbon market value | **₹10.86 lakh/yr** |
+
+---
+
+### Ecosystem Economics
+
+<img src="docs/screenshots/analytics.png.png" alt="Economic tab — ₹3.73 Cr total annual value, service breakdown cards, stacked bar chart, and service-mix pie chart" width="100%" />
+
+> The 144.78 ha of remaining mangroves provide **₹3.73 Cr/yr** in ecosystem services. Fisheries and coastal protection account for the bulk; 5-year net loss has eroded **₹1.42 lakh/yr** in permanent services — captured in the stacked bar chart and service-mix donut.
+
+| Ecosystem Service | Rate (₹/ha/yr) | 2025 Value |
+|---|---|---|
+| Fisheries & nursery habitat | ₹1,50,000 | **₹2.17 Cr** |
+| Coastal protection | ₹80,000 | **₹1.16 Cr** |
+| Carbon market | ₹7,500 | **₹10.9 L** |
+| Biodiversity & recreation | ₹20,000 | **₹29.0 L** |
+| **Total** | | **₹3.73 Cr/yr** |
+| Value lost (2020–25) | | ₹1.42 lakh/yr |
+
+---
+
+### Environmental Driver Correlations
+
+<img src="docs/screenshots/correlations.png.png" alt="Correlations tab — rainfall vs gain r=0.94, urban growth vs loss r=0.97, population density vs loss r=0.96, NDVI health vs coverage r=0.82" width="100%" />
+
+> Four environmental drivers are strongly correlated with mangrove dynamics across the Konkan coast. Monthly monsoon rainfall drives regeneration (r = 0.94), while urban expansion and population density are the dominant loss predictors (r = 0.97 and 0.96). NDVI health tracks overall coverage trends at r = 0.82.
+
+| Driver | Correlation (r) | Strength |
+|---|---|---|
+| Rainfall → Mangrove Gain | **0.94** | Very Strong |
+| Urban Growth → Loss | **0.97** | Very Strong |
+| Population Density → Loss | **0.96** | Very Strong |
+| NDVI Health → Coverage | **0.82** | Strong |
 
 ---
 
@@ -74,9 +147,9 @@ risk prediction, and ecosystem-services valuation along 400 km of India's Konkan
 | Model accuracy | **96 %** |
 | ROC-AUC | **0.931** |
 | F1-Score | **0.955** |
-| Top risk driver | NDVI Trend (26.2 % importance) |
-| Annual carbon sequestration | 868.7 tCO₂/yr — **₹10.86 lakh/yr** |
-| Total ecosystem services | **₹3.72 Cr/yr** |
+| Top risk driver | NDVI Trend (26.2 % feature importance) |
+| Annual carbon sequestration | 869 tCO₂/yr — **₹10.86 lakh/yr** |
+| Total ecosystem services | **₹3.73 Cr/yr** |
 
 </div>
 
@@ -154,13 +227,13 @@ flowchart LR
 
 | Page | What you get |
 |---|---|
-| **Dashboard** | Hero KPIs, coverage trend chart (bar/area), quick-navigation cards |
-| **Interactive Map** | Leaflet map — year selector (2020/2021/2023/2025), time-lapse animation (0.5×/1×/2×), risk layer toggle, draw-zone tool → instant risk report, 3 basemaps (Street / Clean / Satellite) |
+| **Dashboard** | Hero KPIs, 5-year coverage trend chart, quick-navigation cards |
+| **Interactive Map** | Leaflet map — year selector, time-lapse (0.5×/1×/2×), risk layer toggle, draw-zone → instant zone risk report, 3 basemaps |
 | **Change Detection** | Period-by-period loss/gain maps (2020→2021, 2021→2023, 2023→2025); annotated timeline bar chart |
-| **Risk Analysis** | Continuous risk heatmap overlay; zone-distribution donut (Low 96.8 %, Medium 3.1 %, High 0.2 %) |
-| **Live Prediction** | 9-slider real-time XGBoost inference; risk probability badge; SHAP waterfall chart |
-| **Model Info** | Algorithm details, spatial CV methodology, performance cards, feature importance bar chart |
-| **Analytics** | Carbon stock & sequestration; ecosystem-services breakdown in ₹; environmental driver correlations; CSV/PNG/report downloads |
+| **Risk Analysis** | Continuous risk heatmap; zone-distribution donut (Low / Medium / High); classified risk zones map |
+| **Live Prediction** | 9-slider XGBoost inference; risk probability badge; SHAP waterfall chart |
+| **Model Info** | Algorithm details, spatial CV methodology, performance metric cards, feature importance bar chart |
+| **Analytics** | Carbon · Economic · Correlations · Downloads — four tabbed deep-dives |
 
 ### ML Pipeline (4 Stages)
 
@@ -200,10 +273,10 @@ mangroves/
 │   ├── app/                        # Next.js 14 App Router (7 pages)
 │   ├── components/                 # 12+ reusable React/TypeScript components
 │   ├── lib/api.ts                  # Typed Axios API client
-│   ├── tailwind.config.ts          # Custom design tokens (forest green, teal, danger red)
+│   ├── tailwind.config.ts          # Custom design tokens
 │   └── package.json
 │
-├── docs/screenshots/               # Drop screenshots here for README images
+├── docs/screenshots/               # App screenshots used in this README
 ├── run.bat                         # One-click launcher — both servers + browser
 ├── generate_logbook.py             # DOCX formal-submission report generator
 └── PROJECT_CONTEXT.md              # 589-line comprehensive specification
@@ -285,7 +358,7 @@ Base URL: `http://localhost:8000`
 | `/api/analytics/carbon` | GET | Carbon stock & sequestration |
 | `/api/analytics/economic` | GET | Ecosystem services valuation (₹/yr) |
 | `/api/analytics/correlations` | GET | Environmental driver correlations |
-| `/api/risk-zone-query` | POST | Bounding box → custom risk report |
+| `/api/risk-zone-query` | POST | Bounding box → custom zone risk report |
 | `/api/download/features-csv` | GET | Download `features.csv` |
 | `/api/download/summary-report` | GET | Download text report |
 | `/api/download/map-png/{type}` | GET | Download any map PNG |
@@ -372,31 +445,6 @@ Others                 █████████████                 1
 
 ---
 
-## Ecosystem Services Valuation
-
-### Carbon (2025)
-
-| Metric | Value |
-|---|---|
-| Carbon stock density | 900 tC/ha |
-| Annual sequestration | 6.0 tCO₂/ha/yr |
-| Carbon price (Gold Standard 2024) | ₹1,250/tCO₂ |
-| Total stock (2025) | 477,882 tCO₂ |
-| Annual sequestration | 868.7 tCO₂/yr |
-| **Annual carbon value** | **₹10.86 lakh/yr** |
-
-### Services (₹/ha/yr)
-
-| Service | Rate | 2025 Total |
-|---|---|---|
-| Fisheries & nursery habitat | ₹1,50,000 | — |
-| Coastal protection | ₹80,000 | — |
-| Carbon market | ₹7,500 | — |
-| Biodiversity & recreation | ₹20,000 | — |
-| **Combined** | | **₹3.72 Cr/yr** |
-
----
-
 ## Data Sources
 
 | Source | Description |
@@ -406,6 +454,24 @@ Others                 █████████████                 1
 | **Urban masks** | Vasai, Alibag, Ratnagiri, Sindhudurg boundaries |
 | **Aquaculture zones** | 7 synthetic shrimp/fish pond polygons near creek mouths |
 | **Elevation proxy** | Coastal gradient + Gaussian creek-mouth patches |
+
+---
+
+## Generated Outputs
+
+`mangrove_loss_prediction/outputs/`
+
+| File | Description |
+|---|---|
+| `mangrove_map_<year>.png` | Binary classification map (forest green = mangrove) |
+| `mangrove_map_<year>_overlay.png` | Transparent RGBA overlay for Leaflet |
+| `change_map_<y1>_<y2>.png` | Loss (red) / gain (green) per period |
+| `risk_heatmap.png` | Continuous risk probability (RdYlGn_r colormap) |
+| `risk_zones.png` | Discrete Low / Medium / High classification |
+| `change_timeline.png` | Bar chart: loss, gain, net per period |
+| `features.csv` | 65,536 rows × 9 features (full pixel dataset) |
+| `summary_report.txt` | Human-readable results summary |
+| `models/risk_model.pkl` | Trained XGBoost + StandardScaler (pickle) |
 
 ---
 
@@ -427,24 +493,6 @@ XGB_N_ESTIMATORS   = 300
 XGB_MAX_DEPTH      = 6
 XGB_LEARNING_RATE  = 0.05
 ```
-
----
-
-## Generated Outputs
-
-`mangrove_loss_prediction/outputs/`
-
-| File | Description |
-|---|---|
-| `mangrove_map_<year>.png` | Binary classification map (forest green = mangrove) |
-| `mangrove_map_<year>_overlay.png` | Transparent RGBA overlay for Leaflet |
-| `change_map_<y1>_<y2>.png` | Loss (red) / gain (green) per period |
-| `risk_heatmap.png` | Continuous risk probability (RdYlGn_r colormap) |
-| `risk_zones.png` | Discrete Low / Medium / High classification |
-| `change_timeline.png` | Bar chart: loss, gain, net per period |
-| `features.csv` | 65,536 rows × 9 features (full pixel dataset) |
-| `summary_report.txt` | Human-readable results summary |
-| `models/risk_model.pkl` | Trained XGBoost + StandardScaler (pickle) |
 
 ---
 
