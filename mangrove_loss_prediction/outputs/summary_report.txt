@@ -1,0 +1,37 @@
+============================================================
+MANGROVE LOSS PREDICTION - SUMMARY REPORT
+============================================================
+
+Study Area: Vasai–Konkan Coast, Maharashtra
+Analysis Period: 2020-2025
+Satellite: Sentinel-2
+
+------------------------------------------------------------
+STAGE 1: SPATIOTEMPORAL CHANGE DETECTION
+------------------------------------------------------------
+Year 2020: 5.57% mangrove coverage (3652 pixels)
+Year 2021: 5.50% mangrove coverage (3602 pixels)
+Year 2023: 5.33% mangrove coverage (3493 pixels)
+Year 2025: 5.17% mangrove coverage (3386 pixels)
+
+Change Metrics:
+  2020→2021: Loss=50, Gain=0, Net=-50
+  2021→2023: Loss=156, Gain=47, Net=-109
+  2023→2025: Loss=253, Gain=146, Net=-107
+
+------------------------------------------------------------
+STAGE 3: RISK PREDICTION MODEL
+------------------------------------------------------------
+Model Type: XGB
+Training Status: ✓ Trained
+
+Output Maps Generated:
+  • Historical loss maps
+  • Current mangrove health maps
+  • Future risk heatmap (probability)
+  • Risk zone classification (low/medium/high)
+  • Change timeline visualization
+
+============================================================
+END OF REPORT
+============================================================
