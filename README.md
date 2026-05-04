@@ -29,7 +29,7 @@ risk prediction, and ecosystem-services valuation along 400 km of India's Konkan
 
 ## Dashboard
 
-<img src="docs/screenshots/dashboard.png.png" alt="Mangrove Monitor — Dashboard with KPI cards and 5-year coverage trend" width="100%" />
+![Mangrove Monitor — Dashboard with KPI cards and 5-year coverage trend](docs/screenshots/dashboard.png.png)
 
 > **22.1 % coverage · −0.19 % 5-year change · 0.2 % high-risk area · 95 % model accuracy** — at a glance from the hero dashboard.
 
@@ -37,7 +37,7 @@ risk prediction, and ecosystem-services valuation along 400 km of India's Konkan
 
 ## Interactive Map
 
-<img src="docs/screenshots/map.png.png" alt="Leaflet interactive map of Vasai–Konkan coastline with mangrove overlays and draw-zone risk report" width="100%" />
+![Leaflet interactive map of Vasai–Konkan coastline with mangrove overlays and draw-zone risk report](docs/screenshots/map.png.png)
 
 > Leaflet map of the full Vasai–Konkan coastline with transparent RGBA mangrove overlays, year selector (2020 / 2021 / 2023 / 2025), time-lapse animation (0.5× / 1× / 2×), risk layer toggle, and three basemaps (Street / Clean / Satellite).
 
@@ -63,7 +63,7 @@ This allows conservationists and field researchers to **interrogate any sub-regi
 
 ## Risk Analysis
 
-<img src="docs/screenshots/risk.png.png" alt="Risk Analysis page — donut chart, probability heatmap, and classified risk zone map" width="100%" />
+![Risk Analysis — donut chart, probability heatmap, and classified risk zone map](docs/screenshots/risk.png.png)
 
 > XGBoost predicts per-pixel loss probability across all 65,536 pixels. **96.8 % Low · 3.1 % Medium · 0.2 % High (120 critical pixels)**. Visualised as a continuous heatmap (RdYlGn_r) and a discrete risk-zone classification map.
 
@@ -71,11 +71,9 @@ This allows conservationists and field researchers to **interrogate any sub-regi
 
 ## Live Prediction & SHAP Explainability
 
-<img src="docs/screenshots/predict.png.png" alt="Live Prediction — 9 feature sliders, risk badge, input summary panel" width="100%" />
+![Live Prediction — 9 feature sliders, risk badge, input summary panel](docs/screenshots/predict.png.png)
 
-<br/>
-
-<img src="docs/screenshots/shap.png.png" alt="SHAP waterfall chart — per-feature contribution to risk prediction" width="100%" />
+![SHAP waterfall chart — per-feature contribution to risk prediction](docs/screenshots/shap.png.png)
 
 > Adjust 9 ecological sliders and hit **Predict Risk** — XGBoost returns a probability and risk badge in real time. The SHAP waterfall chart below explains exactly why: here *Current Mangrove* pushes risk up by +6.17 while *Aquaculture Distance* (−4.28) and *Fragmentation* (−2.01) pull it down.
 
@@ -87,7 +85,7 @@ The Analytics module provides a four-tab deep-dive into carbon accounting, ecosy
 
 ### Carbon Sequestration
 
-<img src="docs/screenshots/carbon.png.png" alt="Carbon tab — total stock, annual sequestration, carbon lost, cars equivalent, carbon market value chart" width="100%" />
+![Carbon tab — total stock, annual sequestration, carbon lost, cars equivalent, carbon market value chart](docs/screenshots/carbon.png.png)
 
 > **478.2k tCO₂** total above- and below-ground carbon stock. The mangroves sequester **869 tCO₂/yr**, equivalent to removing **395 cars** from the road annually. Net coverage loss since 2020 has cost **1,817 tCO₂** — worth ₹22.7 lakh at Gold Standard voluntary-market rates (₹1,250/tCO₂).
 
@@ -103,7 +101,7 @@ The Analytics module provides a four-tab deep-dive into carbon accounting, ecosy
 
 ### Ecosystem Economics
 
-<img src="docs/screenshots/analytics.png.png" alt="Economic tab — ₹3.73 Cr total annual value, service breakdown cards, stacked bar chart, and service-mix pie chart" width="100%" />
+![Economic tab — ₹3.73 Cr total annual value, service breakdown cards, stacked bar chart, and service-mix pie chart](docs/screenshots/analytics.png.png)
 
 > The 144.78 ha of remaining mangroves provide **₹3.73 Cr/yr** in ecosystem services. Fisheries and coastal protection account for the bulk; 5-year net loss has eroded **₹1.42 lakh/yr** in permanent services — captured in the stacked bar chart and service-mix donut.
 
@@ -120,7 +118,7 @@ The Analytics module provides a four-tab deep-dive into carbon accounting, ecosy
 
 ### Environmental Driver Correlations
 
-<img src="docs/screenshots/correlations.png.png" alt="Correlations tab — rainfall vs gain r=0.94, urban growth vs loss r=0.97, population density vs loss r=0.96, NDVI health vs coverage r=0.82" width="100%" />
+![Correlations tab — rainfall vs gain, urban growth vs loss, population density vs loss, NDVI health vs coverage](docs/screenshots/correlations.png.png)
 
 > Four environmental drivers are strongly correlated with mangrove dynamics across the Konkan coast. Monthly monsoon rainfall drives regeneration (r = 0.94), while urban expansion and population density are the dominant loss predictors (r = 0.97 and 0.96). NDVI health tracks overall coverage trends at r = 0.82.
 
