@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import 'leaflet/dist/leaflet.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #F8FAFC;
+  --foreground: #1E293B;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: "Inter", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+@layer components {
+  .card {
+    @apply bg-white rounded-xl border border-border shadow-card p-6;
+  }
+
+  .btn-primary {
+    @apply bg-accent text-white px-4 py-2 rounded-lg font-medium text-sm
+           hover:bg-accent-hover transition-colors duration-150 focus:outline-none
+           focus:ring-2 focus:ring-accent focus:ring-offset-2;
+  }
+
+  .btn-outline {
+    @apply border border-border bg-white text-foreground px-4 py-2 rounded-lg
+           font-medium text-sm hover:bg-gray-50 transition-colors duration-150;
+  }
+
+  .badge-low    { @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-accent-light text-accent; }
+  .badge-medium { @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-warning-light text-warning; }
+  .badge-high   { @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-danger-light text-danger; }
+
+  .section-title {
+    @apply text-xl font-semibold text-foreground;
+  }
+
+  .label {
+    @apply text-xs font-medium text-muted uppercase tracking-wide;
+  }
+}
+
+/* Leaflet overrides */
+.leaflet-container { border-radius: 0.75rem; }
+.leaflet-control-zoom a { color: #1E293B !important; }
